@@ -134,7 +134,7 @@
 .end-quiz-show{
     transform: translateX(0); 
 }
-.try-again{
+.main-menu-btn,.try-again{
     cursor: pointer;
     width: 250px;
     border-radius: 5px;
@@ -142,11 +142,21 @@
     font-size: 20px;
     border: none;
     transition-duration: 0.5s;
-    background-color: #5fae47;
     color: #ffffff;
     display: flex;
     justify-content: center;
     font-family: 'Nova Square', cursive;
+}
+.try-again{
+    background-color: #5fae47;
+    margin-bottom: 10px;
+}
+.main-menu-btn{
+    background-color: #3550a1;
+}
+.main-menu-btn:hover{
+    box-shadow: 1px 0px 29px 0px #3550a1;
+    transform: scale(1.1);
 }
 .try-again:hover{
     box-shadow: 1px 0px 29px 0px #5fae47;

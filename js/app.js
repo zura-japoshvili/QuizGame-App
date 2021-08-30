@@ -109,6 +109,14 @@ let setLoading = 0
 let currentQuestion = 0;
 let correctAnswer;
 
+let scoreStorage = [];
+localStorage.setItem("myArray",  JSON.stringify(scoreStorage));
+
+let getScoreStorage = JSON.parse(localStorage.getItem("myArray"));
+//storing array in localStorage
+var colors = ["red","blue","green"];
+localStorage.setItem("my_colors", JSON.stringify(colors)); //store colors
+var storedColors = JSON.parse(localStorage.getItem("my_colors")); //get them back
 
 window.addEventListener('load', startGame);
 
@@ -128,12 +136,17 @@ function showQuestion(){
             answer_btn[i].textContent = questions[questionIndex].answers[i].text;
             if(questions[questionIndex].answers[i].correct === true){
                 correctAnswer = i+1;
-                console.log(correctAnswer);
             }
         }
         questionIndex++;
     }
     else{
+        scoreStorage.push(score);
+        scoreStorage.sort(function(a, b){
+          return b - a;
+        });
+        console.log(scoreStorage);
+        console.log(getScoreStorage);
         resetFunc();
     }
 }
