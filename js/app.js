@@ -1,3 +1,4 @@
+
 const questionElem = document.querySelector(".question");
 const ques_cont = document.querySelectorAll(".ques-cont");
 const answer_btn = document.querySelectorAll(".answer");
@@ -110,13 +111,6 @@ let currentQuestion = 0;
 let correctAnswer;
 
 let scoreStorage = [];
-localStorage.setItem("myArray",  JSON.stringify(scoreStorage));
-
-let getScoreStorage = JSON.parse(localStorage.getItem("myArray"));
-//storing array in localStorage
-var colors = ["red","blue","green"];
-localStorage.setItem("my_colors", JSON.stringify(colors)); //store colors
-var storedColors = JSON.parse(localStorage.getItem("my_colors")); //get them back
 
 window.addEventListener('load', startGame);
 
@@ -145,7 +139,8 @@ function showQuestion(){
         scoreStorage.sort(function(a, b){
           return b - a;
         });
-        console.log(scoreStorage);
+        localStorage.setItem("myArray",  JSON.stringify(scoreStorage));
+        let getScoreStorage = JSON.parse(localStorage.getItem("myArray"));
         console.log(getScoreStorage);
         resetFunc();
     }

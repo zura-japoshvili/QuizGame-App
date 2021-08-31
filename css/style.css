@@ -6,7 +6,7 @@
     align-items: center;
     background-color: #00001d;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .content h1{
     font-size: 50px;
@@ -162,3 +162,33 @@
     box-shadow: 1px 0px 29px 0px #5fae47;
     transform: scale(1.1);
 }
+.topten{
+    font-size: 70px;
+    color: #ffffff;
+    font-family: 'Nova Square', cursive;
+    margin-bottom: 20px;
+}
+.top10{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.top10 p {
+    font-size: 30px;
+    color: #ffffff;
+}
+
+@media  screen and (max-width: 900px) {
+    .question{
+        margin-top: 150px;
+    }
+}
+@media  screen and (max-width: 450px) {
+    .content h1{
+        font-size: 35px;
+    }
+    .load-cont{
+        width: 150px;
+    }
+}
+
