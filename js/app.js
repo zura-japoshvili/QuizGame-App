@@ -1,6 +1,8 @@
 const quizCategory = document.querySelector('.quiz-category'),
         startBtn = document.getElementById('start-game-btn'),
-        quizDiff = document.querySelector('.quiz-diff');
+        quizDiff = document.querySelector('.quiz-diff'),
+        gameContent = document.querySelector('.game-content'),
+        startFrom = document.querySelector('.start-form');
 
 
 
@@ -19,6 +21,11 @@ function getCategories() {
 }
 getCategories();
 
-startBtn.addEventListener('click', function(){
 
-})
+
+
+function generateQustion() {
+    startFrom.style.display = 'none';
+    gameContent.style.display = 'flex';
+}
+startFrom.addEventListener('click', generateQustion);
