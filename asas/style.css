@@ -86,10 +86,13 @@
     font-family: 'Nova Square', cursive;
     color: #ffffff;
 }
+.question-main{
+    width: 70%;
+}
 .ques-cont{
     display: flex;
     align-items: center;
-    width: 70%;
+    width: 100%;
     height: 50px;
     color: #ffffff;
     font-size: 25px;

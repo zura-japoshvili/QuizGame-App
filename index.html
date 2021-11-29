@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizGame</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
@@ -14,9 +13,21 @@
 </head>
 <body>
     <div class="content">
-        <h1>Are You Ready?</h1>
-        <a href="game.html"><button class="start">Start Game</button></a>
-        <a href="score.html"><button class="score">Hight Score <i class="fas fa-crown"></i></button></a>
+        <form class="start-form">
+            <label for="category">Choose a category:</label>
+            <select class="quiz-category" class="category">
+                <option class="category" value="0">Any</option>
+            </select>
+            <label for="difficulty">Select Difficulty:</label>
+            <select class="quiz-diff">
+                <option value="0">Any</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button id="start-game-btn">Start Game</button>
+        </form>
     </div>
+    <script src="js/app.js" type="module"></script>
 </body>
 </html>
