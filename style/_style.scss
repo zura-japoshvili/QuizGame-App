@@ -69,6 +69,7 @@
         }
         .question-main{
             width: 70%;
+            position: relative;
             .ques-cont{
                 display: flex;
                 align-items: center;
@@ -82,6 +83,30 @@
                 cursor: pointer;
                 position: relative;
                 border-radius: 12px;
+                &:hover{
+                    box-shadow: 1px 0px 15px 0px #327399;
+                    transform: scale(1.02);
+                }
+            }
+            .next-quest{
+                font-family: 'Nova Square', cursive;
+                position: absolute;
+                right: -40px;
+                bottom: -70px;
+                border-radius: 12px;
+                width: 120px;
+                height: 50px;
+                background-color: #24c54c;
+                transition-duration: 0.5s;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                &:hover{
+                    box-shadow: 1px 0px 29px 0px #3deb5a;
+                    transform: scale(1.1);
+                }
             }
         }
     }

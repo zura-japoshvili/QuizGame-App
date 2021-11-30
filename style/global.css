@@ -111,6 +111,7 @@
 
 .content .game-content .question-main {
   width: 70%;
+  position: relative;
 }
 
 .content .game-content .question-main .ques-cont {
@@ -131,6 +132,44 @@
   cursor: pointer;
   position: relative;
   border-radius: 12px;
+}
+
+.content .game-content .question-main .ques-cont:hover {
+  -webkit-box-shadow: 1px 0px 15px 0px #327399;
+          box-shadow: 1px 0px 15px 0px #327399;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.content .game-content .question-main .next-quest {
+  font-family: 'Nova Square', cursive;
+  position: absolute;
+  right: -40px;
+  bottom: -70px;
+  border-radius: 12px;
+  width: 120px;
+  height: 50px;
+  background-color: #24c54c;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.content .game-content .question-main .next-quest:hover {
+  -webkit-box-shadow: 1px 0px 29px 0px #3deb5a;
+          box-shadow: 1px 0px 29px 0px #3deb5a;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .content .start-form {
