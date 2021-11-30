@@ -35,7 +35,7 @@ function makeAnswers (Arr, correct) {
     let content = '';
     Arr.forEach((value, index)=> {
         content += `<div class="ques-cont">
-            <p class="q-w">${index + 1}. </p>
+            <p class="q-w">${index + 1}. &ensp;</p>
             <p class="answer">${value}</p>
         </div>`;
     });
@@ -74,6 +74,8 @@ function generateRandomAnwsers(){
         const response = data.results[0];
         let questionArr = [];
         let correctAnswer = response.correct_answer
+
+        question.textContent = response.question;
 
         for(let i in response.incorrect_answers){
             questionArr.push(response.incorrect_answers[i]);
