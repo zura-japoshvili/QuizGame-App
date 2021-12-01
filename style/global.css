@@ -154,6 +154,7 @@
   cursor: pointer;
   position: relative;
   border-radius: 12px;
+  border: none;
 }
 
 .content .game-content .question-main .ques-cont:hover {
@@ -185,13 +186,25 @@
       -ms-flex-align: center;
           align-items: center;
   color: white;
+  z-index: 2;
 }
 
 .content .game-content .next-quest:hover {
-  -webkit-box-shadow: 1px 0px 29px 0px #3deb5a;
-          box-shadow: 1px 0px 29px 0px #3deb5a;
+  -webkit-box-shadow: 1px 0px 29px 0px #45ee61;
+          box-shadow: 1px 0px 29px 0px #45ee61;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+.content .game-content .unclickable {
+  position: absolute;
+  right: 10px;
+  bottom: -20px;
+  border-radius: 12px;
+  width: 120px;
+  height: 50px;
+  background-color: #ffffff63;
+  z-index: 3;
 }
 
 .content .start-form {

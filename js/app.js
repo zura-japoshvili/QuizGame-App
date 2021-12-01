@@ -10,7 +10,8 @@ const quizCategory = document.querySelector('.quiz-category'),
         questionCont = document.querySelector('.question-main'),
         loading = document.querySelector('.loading'),
         question_progress = document.querySelector('.question-progress'),
-        score = document.querySelector('.score-n');
+        score = document.querySelector('.score-n'),
+        unclickableBtn = document.querySelector('.unclickable');
 
 const MAX_QUESTION = 10;
 let questionIndex = 0;
@@ -38,10 +39,10 @@ function makeAnswers (Arr, correct) {
     let correct_answer = correct;
     let content = '';
     Arr.forEach((value, index)=> {
-        content += `<div class="ques-cont btn_${index}">
+        content += `<button class="ques-cont btn_${index}">
             <p class="q-w">${index + 1}. &ensp;</p>
             <p class="answer answer_${index}">${value}</p>
-        </div>`;
+        </button>`;
     }); 
     questionCont.innerHTML = content;
 
@@ -54,34 +55,53 @@ function makeAnswers (Arr, correct) {
         answer_3 = document.querySelector('.answer_2').textContent,
         answer_4 = document.querySelector('.answer_3').textContent;
     btn_1.addEventListener('click', function(){
-        btnCheckerFunc(answer_1, correct_answer)
+        btn_1.disabled = true;
+        btn_2.disabled = true;
+        btn_3.disabled = true;
+        btn_4.disabled = true;
+        btnCheckerFunc(answer_1, correct_answer, btn_1)
     });
     btn_2.addEventListener('click', function(){
-        btnCheckerFunc(answer_2, correct_answer)
+        btn_1.disabled = true;
+        btn_2.disabled = true;
+        btn_3.disabled = true;
+        btn_4.disabled = true;
+        btnCheckerFunc(answer_2, correct_answer, btn_2)
     });
     btn_3.addEventListener('click', function(){
-        btnCheckerFunc(answer_3, correct_answer)
+        btn_1.disabled = true;
+        btn_2.disabled = true;
+        btn_3.disabled = true;
+        btn_4.disabled = true;
+        btnCheckerFunc(answer_3, correct_answer, btn_3)
     });
     btn_4.addEventListener('click', function() {
-        btnCheckerFunc(answer_4, correct_answer)
+        btn_1.disabled = true;
+        btn_2.disabled = true;
+        btn_3.disabled = true;
+        btn_4.disabled = true;
+        btnCheckerFunc(answer_4, correct_answer, btn_4)
     });
     
 }
 
-function btnCheckerFunc(answer, correct){
-    console.log(answer, correct)
+function btnCheckerFunc(answer, correct, btn){
     if(answer === correct){
-        console.log('True');
+        ifItsTrue(btn);
     }else{
-        console.log('False');
+        ifItsFalse(btn);
     }
 }
 
-function ifItsTrue(){
-
+function ifItsTrue(btn){
+    points += 100;
+    unclickableBtn.style.zIndex = "1";
+    btn.style.backgroundColor = '#5ee073';
 }
-function ifItsFalse() {
-
+function ifItsFalse(btn) {
+    points -= 20;
+    unclickableBtn.style.zIndex = "1";
+    btn.style.backgroundColor = '#c52d2d';
 }
 
 function getCategories() {
@@ -122,6 +142,9 @@ function generateRandomAnwsers(){
             question_progress.textContent = `${questionIndex}/${MAX_QUESTION}`;
             // 
             score.textContent = points;
+
+            unclickableBtn.style.zIndex = '3';
+
             const response = data.results[0];
             let questionArr = [];
             let correctAnswer = response.correct_answer
