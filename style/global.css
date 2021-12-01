@@ -265,4 +265,55 @@
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
+
+.content .end-game {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content .end-game .last-h1 {
+  font-size: 50px;
+  font-family: 'Nova Square', cursive;
+  color: #78357a;
+}
+
+.content .end-game .play-again {
+  border-radius: 12px;
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Nova Square', cursive;
+  font-size: 35px;
+  cursor: pointer;
+  width: 200px;
+  height: 55px;
+  background-color: #66be3e;
+  color: #0a524c;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+.content .end-game .play-again:hover {
+  -webkit-box-shadow: 1px 0px 29px 0px #decf4f;
+          box-shadow: 1px 0px 29px 0px #decf4f;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #423458;
+}
 /*# sourceMappingURL=global.css.map */

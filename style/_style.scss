@@ -160,4 +160,35 @@
             }
         }
     }
+    .end-game{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .last-h1{
+            font-size: 50px;
+            font-family: 'Nova Square', cursive;
+            color: #78357a;
+        }
+        .play-again{
+            border-radius: 12px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Nova Square', cursive;
+            font-size: 35px;
+            cursor: pointer;
+            width: 200px;
+            height: 55px;
+            background-color: #66be3e;
+            color: #0a524c;
+            transition-duration: 0.5s;
+            &:hover{
+                box-shadow: 1px 0px 29px 0px rgb(222, 207, 79);
+                transform: scale(1.2);
+                color: rgb(66, 52, 88);
+            }
+        }
+    }
 }

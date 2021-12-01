@@ -1,5 +1,3 @@
-// export default sendChecker;
-
 
 const quizCategory = document.querySelector('.quiz-category'),
         startBtn = document.getElementById('start-game-btn'),
@@ -11,7 +9,10 @@ const quizCategory = document.querySelector('.quiz-category'),
         loading = document.querySelector('.loading'),
         question_progress = document.querySelector('.question-progress'),
         score = document.querySelector('.score-n'),
-        unclickableBtn = document.querySelector('.unclickable');
+        unclickableBtn = document.querySelector('.unclickable'),
+        playAgainBtn = document.querySelector('.play-again'),
+        endGame = document.querySelector('.end-game'),
+        lastScore = document.querySelector('.last-score');
 
 const MAX_QUESTION = 10;
 let questionIndex = 0;
@@ -20,6 +21,8 @@ let difficulty,
     category,
     question = document.querySelector('.question');
 
+
+//In this function we create and return an array in which the answers are stored in random positions
 function getRandomQuest(Arr){
     let length = Arr.length,
     randomQuest = [],
@@ -33,8 +36,15 @@ function getRandomQuest(Arr){
     return randomQuest;
     
 }
+// End Game
+function endQuizFunc(){
+    endGame.style.display = 'flex';
+    gameContent.style.display = 'none';
+    lastScore.textContent = points;
+};
 
-
+// We create the answers and add them in HTML, 
+// which once clicked the player no longer has the opportunity to answer the question a second time
 function makeAnswers (Arr, correct) {
     let correct_answer = correct;
     let content = '';
@@ -85,6 +95,8 @@ function makeAnswers (Arr, correct) {
     
 }
 
+// When a player answers a question, this function compares the correct answer and 
+// calls the function (which function it calls depends on whether the answer is correct).
 function btnCheckerFunc(answer, correct, btn){
     if(answer === correct){
         ifItsTrue(btn);
@@ -93,6 +105,8 @@ function btnCheckerFunc(answer, correct, btn){
     }
 }
 
+// These two functions make the answer greener or redder (depending on whether it is correct or not) 
+// and we already have the opportunity to go to the next question and call generateRandomAnwsers () again
 function ifItsTrue(btn){
     points += 100;
     unclickableBtn.style.zIndex = "1";
@@ -104,6 +118,7 @@ function ifItsFalse(btn) {
     btn.style.backgroundColor = '#c52d2d';
 }
 
+//We creating categories from this func
 function getCategories() {
     fetch('https://opentdb.com/api_category.php')
     .then(response => response.json())
@@ -120,6 +135,8 @@ function getCategories() {
 }
 getCategories();
 
+
+// The function with which the quiz begins
 function startQuizFunc() {
     startFrom.style.display = 'none';
     gameContent.style.display = 'flex';
@@ -128,6 +145,9 @@ function startQuizFunc() {
     generateRandomAnwsers()
 }
 
+//This is the main function
+//The function works until QuestionIndex isn't equals MAX_QUESTION
+//Through the function we get incorrect and correct answers from the API and store them in an array
 
 
 function generateRandomAnwsers(){
@@ -161,10 +181,17 @@ function generateRandomAnwsers(){
             makeAnswers(randomQuestionArr, correctAnswer);
         });
     }else{
-
+        endQuizFunc();
     }
 
 }
 
 startBtn.addEventListener('click', startQuizFunc);
 nextQuestBtn.addEventListener('click', generateRandomAnwsers);
+
+playAgainBtn.addEventListener('click', function(){
+    points = 0;
+    questionIndex = 0;
+    endGame.style.display = 'none';
+    startFrom.style.display = 'flex';
+})
