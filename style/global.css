@@ -5,6 +5,28 @@
           box-sizing: border-box;
 }
 
+@media screen and (max-width: 900px) {
+  .question {
+    font-size: 30px !important;
+    margin-top: 150px !important;
+  }
+  .answer {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .question {
+    font-size: 15px !important;
+  }
+  .answer {
+    font-size: 15px !important;
+  }
+  .load-cont {
+    width: 150px !important;
+  }
+}
+
 .content {
   height: 100vh;
   display: -webkit-box;
@@ -101,9 +123,9 @@
 }
 
 .content .game-content .question {
-  margin-top: 50px;
+  margin-top: 60px;
   width: 70%;
-  font-size: 50px;
+  font-size: 30px;
   font-family: 'Nova Square', cursive;
   color: #ffffff;
   margin-bottom: 50px;
@@ -141,11 +163,11 @@
           transform: scale(1.02);
 }
 
-.content .game-content .question-main .next-quest {
+.content .game-content .next-quest {
   font-family: 'Nova Square', cursive;
   position: absolute;
-  right: -40px;
-  bottom: -70px;
+  right: 10px;
+  bottom: -20px;
   border-radius: 12px;
   width: 120px;
   height: 50px;
@@ -165,7 +187,7 @@
   color: white;
 }
 
-.content .game-content .question-main .next-quest:hover {
+.content .game-content .next-quest:hover {
   -webkit-box-shadow: 1px 0px 29px 0px #3deb5a;
           box-shadow: 1px 0px 29px 0px #3deb5a;
   -webkit-transform: scale(1.1);

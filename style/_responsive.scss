@@ -1,0 +1,20 @@
+@media  screen and (max-width: 900px) {
+    .question{
+        font-size: 30px !important;
+        margin-top: 150px !important;
+    }
+    .answer{
+        font-size: 20px;
+    }
+}
+@media  screen and (max-width: 450px) {
+    .question{
+        font-size: 15px !important;
+    }
+    .answer{
+        font-size: 15px !important;
+    }
+    .load-cont{
+        width: 150px !important;
+    }
+}

@@ -1,20 +1,17 @@
 
-
 const quizCategory = document.querySelector('.quiz-category'),
         startBtn = document.getElementById('start-game-btn'),
         quizDiff = document.querySelector('.quiz-diff'),
         gameContent = document.querySelector('.game-content'),
         startFrom = document.querySelector('.start-form'),
         nextQuestBtn = document.querySelector('.next-quest'),
-        questionCont = document.querySelector('.question-main')
-        question = document.querySelector('.question');
+        questionCont = document.querySelector('.question-main');
 
 const MAX_QUESTION = 10;
 let questionIndex = 0;
 let difficulty,
-    category;
-
-
+    category,
+    question = document.querySelector('.question');
 
 function getRandomQuest(Arr){
     let length = Arr.length,
@@ -32,15 +29,28 @@ function getRandomQuest(Arr){
 
 
 function makeAnswers (Arr, correct) {
+    let correct_answer = correct;
     let content = '';
     Arr.forEach((value, index)=> {
-        content += `<div class="ques-cont">
+        content += `<div class="ques-cont btn_${index}">
             <p class="q-w">${index + 1}. &ensp;</p>
-            <p class="answer">${value}</p>
+            <p class="answer answer_${index}">${value}</p>
         </div>`;
-    });
-    content += '<p class="next-quest">Next question</p>';
+    }); 
     questionCont.innerHTML = content;
+
+    const btn_1 = document.querySelector('.btn_0'),
+        btn_2 = document.querySelector('.btn_1'),
+        btn_3 = document.querySelector('.btn_2'),
+        btn_4 = document.querySelector('.btn_3'),
+        answer_1 = document.querySelector('.answer_0').textContent,
+        answer_2 = document.querySelector('.answer_1').textContent,
+        answer_3 = document.querySelector('.answer_2').textContent,
+        answer_4 = document.querySelector('.answer_3').textContent;
+
+    btn_1.addEventListener('click', function(answer_1, correct_answer){
+        
+    });
 }
 
 
@@ -53,7 +63,10 @@ function getCategories() {
         for(let i in response) {
             options += `<option class='categories'value=${response[i].id}>${response[i].name}</option>`;
         }
+
+        quizCategory.innerHTML = options;
     });
+    
 }
 getCategories();
 
@@ -75,7 +88,7 @@ function generateRandomAnwsers(){
         let questionArr = [];
         let correctAnswer = response.correct_answer
 
-        question.textContent = response.question;
+        question.innerHTML = response.question;
 
         for(let i in response.incorrect_answers){
             questionArr.push(response.incorrect_answers[i]);
@@ -89,3 +102,4 @@ function generateRandomAnwsers(){
 }
 
 startBtn.addEventListener('click', startQuizFunc);
+nextQuestBtn.addEventListener('click', generateRandomAnwsers);
