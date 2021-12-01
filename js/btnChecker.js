@@ -1,6 +1,6 @@
-import {default as answer} from './app.js';
+// import {default as sendChecker} from './app.js';
 
-console.log(answer);
+// console.log(sendChecker(), 12412);
     
 
 

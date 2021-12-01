@@ -1,3 +1,5 @@
+// export default sendChecker;
+
 
 const quizCategory = document.querySelector('.quiz-category'),
         startBtn = document.getElementById('start-game-btn'),
@@ -5,10 +7,14 @@ const quizCategory = document.querySelector('.quiz-category'),
         gameContent = document.querySelector('.game-content'),
         startFrom = document.querySelector('.start-form'),
         nextQuestBtn = document.querySelector('.next-quest'),
-        questionCont = document.querySelector('.question-main');
+        questionCont = document.querySelector('.question-main'),
+        loading = document.querySelector('.loading'),
+        question_progress = document.querySelector('.question-progress'),
+        score = document.querySelector('.score-n');
 
 const MAX_QUESTION = 10;
 let questionIndex = 0;
+let points = 0;
 let difficulty,
     category,
     question = document.querySelector('.question');
@@ -47,12 +53,36 @@ function makeAnswers (Arr, correct) {
         answer_2 = document.querySelector('.answer_1').textContent,
         answer_3 = document.querySelector('.answer_2').textContent,
         answer_4 = document.querySelector('.answer_3').textContent;
-
-    btn_1.addEventListener('click', function(answer_1, correct_answer){
-        
+    btn_1.addEventListener('click', function(){
+        btnCheckerFunc(answer_1, correct_answer)
     });
+    btn_2.addEventListener('click', function(){
+        btnCheckerFunc(answer_2, correct_answer)
+    });
+    btn_3.addEventListener('click', function(){
+        btnCheckerFunc(answer_3, correct_answer)
+    });
+    btn_4.addEventListener('click', function() {
+        btnCheckerFunc(answer_4, correct_answer)
+    });
+    
 }
 
+function btnCheckerFunc(answer, correct){
+    console.log(answer, correct)
+    if(answer === correct){
+        console.log('True');
+    }else{
+        console.log('False');
+    }
+}
+
+function ifItsTrue(){
+
+}
+function ifItsFalse() {
+
+}
 
 function getCategories() {
     fetch('https://opentdb.com/api_category.php')
@@ -81,24 +111,36 @@ function startQuizFunc() {
 
 
 function generateRandomAnwsers(){
-    fetch(`https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${difficulty}&type=multiple`)
-    .then(response => response.json())
-    .then(data =>{
-        const response = data.results[0];
-        let questionArr = [];
-        let correctAnswer = response.correct_answer
+    if(questionIndex !== MAX_QUESTION){
+        fetch(`https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${difficulty}&type=multiple`)
+        .then(response => response.json())
+        .then(data =>{
 
-        question.innerHTML = response.question;
+            //Shows quiz progress
+            questionIndex ++;
+            loading.style.width = `${questionIndex * (100 / MAX_QUESTION)}%`;
+            question_progress.textContent = `${questionIndex}/${MAX_QUESTION}`;
+            // 
+            score.textContent = points;
+            const response = data.results[0];
+            let questionArr = [];
+            let correctAnswer = response.correct_answer
+    
+            question.innerHTML = response.question;
+    
+            for(let i in response.incorrect_answers){
+                questionArr.push(response.incorrect_answers[i]);
+            }
+            questionArr.push(correctAnswer);
+    
+            let randomQuestionArr = getRandomQuest(questionArr);
+    
+            makeAnswers(randomQuestionArr, correctAnswer);
+        });
+    }else{
 
-        for(let i in response.incorrect_answers){
-            questionArr.push(response.incorrect_answers[i]);
-        }
-        questionArr.push(correctAnswer);
+    }
 
-        let randomQuestionArr = getRandomQuest(questionArr);
-
-        makeAnswers(randomQuestionArr, correctAnswer);
-    });
 }
 
 startBtn.addEventListener('click', startQuizFunc);
